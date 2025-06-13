@@ -51,16 +51,16 @@ _(check items as you complete them)_
 - [x] Update `tauri.conf.json`
   - [x] `distDir` → `../../packages/ui/dist`
   - [x] Application name, identifier
-- [ ] Add Rust deps:
+- [x] Add Rust deps:
   - `rusqlite`, `serde`, `serde_json`, `uuid`, `zip-rs`, `walkdir`, `diffy`
 - [x] Set up Rust workspace (`Cargo.toml` at root)
-- [ ] Configure Clippy & rustfmt in CI
+- [x] Configure Clippy & rustfmt in CI
 
 ---
 
 ## 4 SQLite Layer
 
-- [ ] `db/schema.sql` — create `nodes`, `assets`, `op_log`
+- [x] `db/schema.sql` — create `nodes`, `assets`, `op_log`
 - [ ] `db.rs`
   - [ ] Open DB file in platform-specific app data dir
   - [ ] Run migrations on startup
