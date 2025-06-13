@@ -46,11 +46,11 @@ _(check items as you complete them)_
 
 ## 3 Tauri / Rust Core
 
-- [ ] `cargo install tauri-cli`
-- [ ] `tauri init` in `apps/desktop`
-- [ ] Update `tauri.conf.json`
-  - [ ] `distDir` → `../../packages/ui/dist`
-  - [ ] Application name, identifier
+- [x] `cargo install tauri-cli`
+- [x] `tauri init` in `apps/desktop`
+- [x] Update `tauri.conf.json`
+  - [x] `distDir` → `../../packages/ui/dist`
+  - [x] Application name, identifier
 - [ ] Add Rust deps:
   - `rusqlite`, `serde`, `serde_json`, `uuid`, `zip-rs`, `walkdir`, `diffy`
 - [x] Set up Rust workspace (`Cargo.toml` at root)
