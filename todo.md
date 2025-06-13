@@ -32,11 +32,11 @@ _(check items as you complete them)_
 
 ## 2 Continuous Integration
 
-- [ ] `.github/workflows/ci.yml`
-  - [ ] Cache pnpm & Rust toolchain
-  - [ ] Lint (`pnpm exec eslint .`)
-  - [ ] Unit tests (`pnpm -r test` & `cargo test`)
-  - [ ] Build desktop app (`cargo tauri build --debug`) on all OSes
+- [x] `.github/workflows/ci.yml`
+  - [x] Cache pnpm & Rust toolchain
+  - [x] Lint (`pnpm exec eslint .`)
+  - [x] Unit tests (`pnpm -r test` & `cargo test`)
+  - [x] Build desktop app (`cargo tauri build --debug`) on all OSes
 - [ ] `.github/workflows/release.yml`
   - [ ] Trigger on tags `v*`
   - [ ] Build signed installers
@@ -53,7 +53,7 @@ _(check items as you complete them)_
   - [ ] Application name, identifier
 - [ ] Add Rust deps:
   - `rusqlite`, `serde`, `serde_json`, `uuid`, `zip-rs`, `walkdir`, `diffy`
-- [ ] Set up Rust workspace (`Cargo.toml` at root)
+- [x] Set up Rust workspace (`Cargo.toml` at root)
 - [ ] Configure Clippy & rustfmt in CI
 
 ---
