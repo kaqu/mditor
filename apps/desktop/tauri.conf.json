@@ -1,17 +1,15 @@
 {
-  "package": {
-    "productName": "AI-MD-Editor",
-    "version": "0.1.0"
-  },
+  "productName": "AI-MD-Editor",
+  "version": "0.1.0",
+  "identifier": "com.aimd.editor",
   "build": {
     "beforeDevCommand": "",
     "beforeBuildCommand": "",
-    "devPath": "../..",
-    "distDir": "../../packages/ui/dist"
+    "devUrl": "http://localhost:5173",
+    "frontendDist": "../../packages/ui/dist"
   },
-  "tauri": {
-    "bundle": {
-      "identifier": "com.aimd.editor"
-    }
+  "app": {},
+  "bundle": {
+    "icon": ["target/icon.png"]
   }
 }
