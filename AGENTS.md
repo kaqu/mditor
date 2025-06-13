@@ -1,9 +1,24 @@
-# Project Agents.md Guide for OpenAI Codex
+# Project Agents Guide
 
-This Agents.md file provides comprehensive guidance for OpenAI Codex and other AI agents working with this codebase.
+This file defines rules for OpenAI Codex and other AI agents working in this repository.
 
-specification.md file defines application scope and requirements.
+## Reference Documents
+- `specification.md` describes the application requirements and architecture.
+- `todo.md` lists implementation tasks. Always work on the **first unchecked item** and mark it complete when finished.
 
-todo.md file specifies tasks to be implemented, agents should work on first incomplete task from the list and mark it as completed when finished.
+## Commit Guidelines
+- Use **Conventional Commits** style messages (`feat:`, `fix:`, `docs:`, `chore:`...).
+- Keep pull requests focused on a single task from `todo.md`.
 
-AGENTS.md file defines agent rules, it should be updated during project implementation addin important project related details required for further development like commands to run unit tests or linters as well as required code style and project structure as well as architecture details.
+## Development Workflow
+1. Format code before committing:
+   - TypeScript: `pnpm exec prettier --write .`
+   - Rust: `cargo fmt`
+2. Run linters and unit tests:
+   - TypeScript: `pnpm exec eslint .` and `pnpm -r test`
+   - Rust: `cargo clippy -- -D warnings` and `cargo test`
+3. Build & run in development:
+   - `pnpm dev` to start the React UI
+   - `cargo tauri dev` to run the Tauri shell
+
+Update this file with additional rules (tests, linting, style) as the project grows.
