@@ -4,10 +4,10 @@
 ---
 
 ## 0 Repository & Meta
-- [ ] **Create GitHub repository** `ai-md-editor`
-- [ ] Add `LICENSE` (MIT)  
-- [ ] Commit `SPEC.md` and `README.md` stubs  
-- [ ] `.gitignore` for `target/`, `node_modules/`, `dist/`, `*.sqlite`, `*.env*`  
+- [x] **Create GitHub repository** `ai-md-editor`
+- [x] Add `LICENSE` (MIT)
+- [x] Commit `SPEC.md` and `README.md` stubs
+- [x] `.gitignore` for `target/`, `node_modules/`, `dist/`, `*.sqlite`, `*.env*`  
 - [ ] Default branch `dev`; protect `main`  
 - [ ] Conventional Commits tooling  
   - [ ] `commitlint`, `husky` pre-commit/push hooks  
