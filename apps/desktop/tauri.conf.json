@@ -1,0 +1,17 @@
+{
+  "package": {
+    "productName": "AI-MD-Editor",
+    "version": "0.1.0"
+  },
+  "build": {
+    "beforeDevCommand": "",
+    "beforeBuildCommand": "",
+    "devPath": "../..",
+    "distDir": "../../packages/ui/dist"
+  },
+  "tauri": {
+    "bundle": {
+      "identifier": "com.aimd.editor"
+    }
+  }
+}
