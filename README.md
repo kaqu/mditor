@@ -4,3 +4,9 @@ A local-first Markdown editor with an embedded AI agent. This repository contain
 
 More details can be found in `specification.md`.
 
+## Branching Model
+
+Active development happens on the `dev` branch. The `main` branch is protected
+and only updated from `dev` when releasing. Feature branches should be created
+from `dev` and pull requests should target `dev`.
+

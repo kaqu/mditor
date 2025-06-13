@@ -1,238 +1,262 @@
-# ✅ AI-MD-Editor — Detailed Implementation To-Do List  
-*(check items as you complete them)*
+# ✅ AI-MD-Editor — Detailed Implementation To-Do List
+
+_(check items as you complete them)_
 
 ---
 
 ## 0 Repository & Meta
+
 - [x] **Create GitHub repository** `ai-md-editor`
 - [x] Add `LICENSE` (MIT)
 - [x] Commit `SPEC.md` and `README.md` stubs
-- [x] `.gitignore` for `target/`, `node_modules/`, `dist/`, `*.sqlite`, `*.env*`  
-- [ ] Default branch `dev`; protect `main`  
-- [ ] Conventional Commits tooling  
-  - [ ] `commitlint`, `husky` pre-commit/push hooks  
-  - [ ] `lint-staged` for format check  
+- [x] `.gitignore` for `target/`, `node_modules/`, `dist/`, `*.sqlite`, `*.env*`
+- [x] Default branch `dev`; protect `main`
+- [x] Conventional Commits tooling
+  - [x] `commitlint`, `husky` pre-commit/push hooks
+  - [x] `lint-staged` for format check
 
 ---
 
 ## 1 Monorepo Scaffolding
-- [ ] `pnpm init` at root  
-- [ ] `pnpm-workspace.yaml` with:
+
+- [x] `pnpm init` at root
+- [x] `pnpm-workspace.yaml` with:
   - `apps/desktop`
   - `packages/ui`
   - `packages/agent`
   - `packages/shared`
-- [ ] Root devDeps: `typescript`, `eslint`, `prettier`, `vitest`, `tsx`  
-- [ ] Root `tsconfig.json` (`composite`, `paths` for shared types)
+- [x] Root devDeps: `typescript`, `eslint`, `prettier`, `vitest`, `tsx`
+- [x] Root `tsconfig.json` (`composite`, `paths` for shared types)
 
 ---
 
 ## 2 Continuous Integration
+
 - [ ] `.github/workflows/ci.yml`
-  - [ ] Cache pnpm & Rust toolchain  
-  - [ ] Lint (`pnpm exec eslint .`)  
-  - [ ] Unit tests (`pnpm -r test` & `cargo test`)  
-  - [ ] Build desktop app (`cargo tauri build --debug`) on all OSes  
+  - [ ] Cache pnpm & Rust toolchain
+  - [ ] Lint (`pnpm exec eslint .`)
+  - [ ] Unit tests (`pnpm -r test` & `cargo test`)
+  - [ ] Build desktop app (`cargo tauri build --debug`) on all OSes
 - [ ] `.github/workflows/release.yml`
-  - [ ] Trigger on tags `v*`  
-  - [ ] Build signed installers  
-  - [ ] Upload to GitHub Release  
+  - [ ] Trigger on tags `v*`
+  - [ ] Build signed installers
+  - [ ] Upload to GitHub Release
 
 ---
 
 ## 3 Tauri / Rust Core
-- [ ] `cargo install tauri-cli`  
-- [ ] `tauri init` in `apps/desktop`  
+
+- [ ] `cargo install tauri-cli`
+- [ ] `tauri init` in `apps/desktop`
 - [ ] Update `tauri.conf.json`
   - [ ] `distDir` → `../../packages/ui/dist`
-  - [ ] Application name, identifier  
-- [ ] Add Rust deps:  
+  - [ ] Application name, identifier
+- [ ] Add Rust deps:
   - `rusqlite`, `serde`, `serde_json`, `uuid`, `zip-rs`, `walkdir`, `diffy`
-- [ ] Set up Rust workspace (`Cargo.toml` at root)  
-- [ ] Configure Clippy & rustfmt in CI  
+- [ ] Set up Rust workspace (`Cargo.toml` at root)
+- [ ] Configure Clippy & rustfmt in CI
 
 ---
 
 ## 4 SQLite Layer
-- [ ] `db/schema.sql` — create `nodes`, `assets`, `op_log`  
+
+- [ ] `db/schema.sql` — create `nodes`, `assets`, `op_log`
 - [ ] `db.rs`
-  - [ ] Open DB file in platform-specific app data dir  
-  - [ ] Run migrations on startup  
-- [ ] CRUD helpers (`create_node`, `update_content`, `move_node`, `delete_node`)  
-- [ ] Op-log insert on each mutating call  
-- [ ] Unit tests: CRUD paths, cascade delete, retention trim  
+  - [ ] Open DB file in platform-specific app data dir
+  - [ ] Run migrations on startup
+- [ ] CRUD helpers (`create_node`, `update_content`, `move_node`, `delete_node`)
+- [ ] Op-log insert on each mutating call
+- [ ] Unit tests: CRUD paths, cascade delete, retention trim
 
 ---
 
 ## 5 Tool Command API (Rust)
-- [ ] `#[tauri::command] read_file(id)`  
-- [ ] `write_file(id, new_content)` → return unified diff  
-- [ ] `create_file(parent_id, name, content?)`  
-- [ ] `delete_node(id)`  
-- [ ] `move_node(id, new_parent)`  
-- [ ] `list_tree(parent_id?)` (shallow)  
-- [ ] `undo()` / `redo()`  
-- [ ] `export_zip(dest_path)` / `export_dir(dest)`  
-- [ ] `import_path(src)` merges & returns report  
-- [ ] `get_asset(uuid)` streaming handler  
+
+- [ ] `#[tauri::command] read_file(id)`
+- [ ] `write_file(id, new_content)` → return unified diff
+- [ ] `create_file(parent_id, name, content?)`
+- [ ] `delete_node(id)`
+- [ ] `move_node(id, new_parent)`
+- [ ] `list_tree(parent_id?)` (shallow)
+- [ ] `undo()` / `redo()`
+- [ ] `export_zip(dest_path)` / `export_dir(dest)`
+- [ ] `import_path(src)` merges & returns report
+- [ ] `get_asset(uuid)` streaming handler
 
 ---
 
 ## 6 React UI Bootstrap (`packages/ui`)
-- [ ] `pnpm create vite@latest ui -- --template react-ts`  
-- [ ] Install libs:  
-  - `@codemirror/basic-setup`, `@codemirror/lang-markdown`, `react-codemirror`  
-  - `react-sortable-tree`, `react-split-pane`  
-  - `markdown-it`, `highlight.js`, `mathjax-full`  
-  - `@tauri-apps/api`  
-- [ ] Global Tailwind CSS (optional)  
-- [ ] **Layout**  
-  - [ ] Left sidebar tree view  
-  - [ ] Split main pane: CodeMirror + Preview  
-  - [ ] Collapsible right sidebar container  
-  - [ ] Top bar with export / settings icons  
+
+- [ ] `pnpm create vite@latest ui -- --template react-ts`
+- [ ] Install libs:
+  - `@codemirror/basic-setup`, `@codemirror/lang-markdown`, `react-codemirror`
+  - `react-sortable-tree`, `react-split-pane`
+  - `markdown-it`, `highlight.js`, `mathjax-full`
+  - `@tauri-apps/api`
+- [ ] Global Tailwind CSS (optional)
+- [ ] **Layout**
+  - [ ] Left sidebar tree view
+  - [ ] Split main pane: CodeMirror + Preview
+  - [ ] Collapsible right sidebar container
+  - [ ] Top bar with export / settings icons
 - [ ] **State** (TanStack Query or Zustand)
-  - [ ] Nodes cache via IPC  
-  - [ ] Current file selection  
-  - [ ] Dirty flag & autosave  
+  - [ ] Nodes cache via IPC
+  - [ ] Current file selection
+  - [ ] Dirty flag & autosave
 
 ---
 
 ## 7 IPC Bridges (`packages/shared`)
+
 - [ ] Create `src/ipc.ts`
-  - [ ] Typed wrappers for each Tauri command  
-- [ ] Re-export shared models (`NodeMeta`, `Diff`)  
+  - [ ] Typed wrappers for each Tauri command
+- [ ] Re-export shared models (`NodeMeta`, `Diff`)
 
 ---
 
 ## 8 File-Tree UI
-- [ ] Drag-drop reorder → `move_node`  
-- [ ] Context menu: new file/folder, rename, delete  
-- [ ] Search filter input  
-- [ ] Sync selection with editor tab  
+
+- [ ] Drag-drop reorder → `move_node`
+- [ ] Context menu: new file/folder, rename, delete
+- [ ] Search filter input
+- [ ] Sync selection with editor tab
 
 ---
 
 ## 9 Editor & Preview
-- [ ] CodeMirror 6 instance with Markdown language  
-- [ ] `diff-match-patch` decorations on unsaved changes  
-- [ ] Live preview panel using `markdown-it`  
-  - [ ] MathJax hook for `$$` blocks  
-  - [ ] Asset resolver: transform `assets://uuid` → `tauri://asset?uuid=`  
+
+- [ ] CodeMirror 6 instance with Markdown language
+- [ ] `diff-match-patch` decorations on unsaved changes
+- [ ] Live preview panel using `markdown-it`
+  - [ ] MathJax hook for `$$` blocks
+  - [ ] Asset resolver: transform `assets://uuid` → `tauri://asset?uuid=`
 
 ---
 
 ## 10 Undo / Redo Integration
-- [ ] Bind `Cmd/Ctrl+Z` → IPC `undo`  
-- [ ] Bind `Shift+Cmd/Ctrl+Z` → `redo`  
-- [ ] Update editor & tree after operation  
+
+- [ ] Bind `Cmd/Ctrl+Z` → IPC `undo`
+- [ ] Bind `Shift+Cmd/Ctrl+Z` → `redo`
+- [ ] Update editor & tree after operation
 
 ---
 
 ## 11 Binary Asset Flow
-- [ ] Detect `paste` / `drop` events with `image/*`  
-- [ ] IPC `save_asset(bytes, mime)` → returns `uuid`  
-- [ ] Insert Markdown: `![alt](assets://{uuid})` at cursor  
-- [ ] Preview fetches via Tauri asset endpoint  
+
+- [ ] Detect `paste` / `drop` events with `image/*`
+- [ ] IPC `save_asset(bytes, mime)` → returns `uuid`
+- [ ] Insert Markdown: `![alt](assets://{uuid})` at cursor
+- [ ] Preview fetches via Tauri asset endpoint
 
 ---
 
 ## 12 Export / Import UI
-- [ ] “Export ▾” button  
-  - [ ] To Directory (OS picker)  
-  - [ ] To ZIP  
-- [ ] “Import” button (folder/zip)  
-  - [ ] Show merge summary dialog  
+
+- [ ] “Export ▾” button
+  - [ ] To Directory (OS picker)
+  - [ ] To ZIP
+- [ ] “Import” button (folder/zip)
+  - [ ] Show merge summary dialog
 
 ---
 
 ## 13 Agent Subsystem (`packages/agent`)
-- [ ] Install deps: `langchain`, `xstate`, `diff-match-patch`, `openai`  
-- [ ] `tools.ts` mapping → IPC calls  
+
+- [ ] Install deps: `langchain`, `xstate`, `diff-match-patch`, `openai`
+- [ ] `tools.ts` mapping → IPC calls
 - [ ] `agentMachine.ts`
-  - [ ] States: `planning`, `acting`, `waiting_user`, `done`, `aborted`  
-  - [ ] Limit checks (tool count, timeout)  
-- [ ] Web Worker wrapper (`comlink`)  
-- [ ] Progress store (`useAgentStore`)  
+  - [ ] States: `planning`, `acting`, `waiting_user`, `done`, `aborted`
+  - [ ] Limit checks (tool count, timeout)
+- [ ] Web Worker wrapper (`comlink`)
+- [ ] Progress store (`useAgentStore`)
 
 ### UI Integration
-- [ ] Slash-command modal (`Cmd/Ctrl+K`)  
+
+- [ ] Slash-command modal (`Cmd/Ctrl+K`)
 - [ ] Right pane sections:
-  - [ ] Prompt history (current loop)  
-  - [ ] Instructions editor (Markdown w/ assets)  
-  - [ ] Live task list / plan  
-- [ ] Ask-user modal (blocks editor)  
+  - [ ] Prompt history (current loop)
+  - [ ] Instructions editor (Markdown w/ assets)
+  - [ ] Live task list / plan
+- [ ] Ask-user modal (blocks editor)
 
 ---
 
 ## 14 Safety & Error UI
-- [ ] Global error boundary in React  
-- [ ] Display agent abort reason (“limit exceeded”)  
-- [ ] Toast notifications for export/import success/fail  
+
+- [ ] Global error boundary in React
+- [ ] Display agent abort reason (“limit exceeded”)
+- [ ] Toast notifications for export/import success/fail
 
 ---
 
 ## 15 Keyboard Shortcuts
+
 - [ ] Tauri global shortcuts:
-  - [ ] `Cmd/Ctrl+N` new file  
-  - [ ] `Cmd/Ctrl+Shift+N` new folder  
-  - [ ] `Cmd/Ctrl+S` save  
-  - [ ] `Cmd/Ctrl+K` agent prompt  
+  - [ ] `Cmd/Ctrl+N` new file
+  - [ ] `Cmd/Ctrl+Shift+N` new folder
+  - [ ] `Cmd/Ctrl+S` save
+  - [ ] `Cmd/Ctrl+K` agent prompt
 - [ ] In-editor keymap selection (default / Vim / Emacs)
 
 ---
 
 ## 16 Settings Panel
-- [ ] React modal under top bar  
+
+- [ ] React modal under top bar
 - [ ] Fields:
-  - [ ] OpenAI API key (stored via Tauri `@tauri-apps/plugin-store`)  
-  - [ ] Max tool calls / timeout sliders (advanced)  
-- [ ] “Clear DB” / “Open data folder” utilities  
+  - [ ] OpenAI API key (stored via Tauri `@tauri-apps/plugin-store`)
+  - [ ] Max tool calls / timeout sliders (advanced)
+- [ ] “Clear DB” / “Open data folder” utilities
 
 ---
 
 ## 17 Packaging
-- [ ] `tauri.conf.json` platform-specific identifiers  
-- [ ] Provide `.env` template for CI signing creds  
-- [ ] Verify `cargo tauri build --release` on macOS, Windows, Linux  
-- [ ] Generate SHA256 checksums  
+
+- [ ] `tauri.conf.json` platform-specific identifiers
+- [ ] Provide `.env` template for CI signing creds
+- [ ] Verify `cargo tauri build --release` on macOS, Windows, Linux
+- [ ] Generate SHA256 checksums
 
 ---
 
 ## 18 Tests
-- **Rust**  
-  - [ ] Unit: each DB function, export/import parity  
-- **TypeScript**  
-  - [ ] Vitest for agent planner, tool wrappers  
-- **E2E** (Playwright)  
-  - [ ] Launch app → create file → run agent prompt → verify files created  
-  - [ ] Export dir → compare file contents against DB  
-- [ ] Add test steps to CI matrix  
+
+- **Rust**
+  - [ ] Unit: each DB function, export/import parity
+- **TypeScript**
+  - [ ] Vitest for agent planner, tool wrappers
+- **E2E** (Playwright)
+  - [ ] Launch app → create file → run agent prompt → verify files created
+  - [ ] Export dir → compare file contents against DB
+- [ ] Add test steps to CI matrix
 
 ---
 
 ## 19 Documentation
+
 - [ ] Expand `README.md`
-  - [ ] Install prereqs (Rust, pnpm)  
-  - [ ] Dev workflow commands  
-  - [ ] Building installers  
-  - [ ] Usage quick-start (screencap GIF)  
-- [ ] `CONTRIBUTING.md` (branch naming, linting, release)  
-- [ ] Changelog template (`CHANGELOG.md`)  
+  - [ ] Install prereqs (Rust, pnpm)
+  - [ ] Dev workflow commands
+  - [ ] Building installers
+  - [ ] Usage quick-start (screencap GIF)
+- [ ] `CONTRIBUTING.md` (branch naming, linting, release)
+- [ ] Changelog template (`CHANGELOG.md`)
 
 ---
 
 ## 20 Demo Assets
-- [ ] Sample workspace SQL dump in `/samples`  
-- [ ] Record 60-second demo GIF and place in `/media`  
+
+- [ ] Sample workspace SQL dump in `/samples`
+- [ ] Record 60-second demo GIF and place in `/media`
 
 ---
 
 ## 21 Release Process
-- [ ] Bump versions (`pnpm version`, `cargo set-version`)  
-- [ ] Generate changelog (`pnpm changelog`)  
-- [ ] `git tag v0.1.0` → push tags  
-- [ ] GitHub Action builds & uploads installers  
-- [ ] Publish release notes with checksums & demo GIF  
+
+- [ ] Bump versions (`pnpm version`, `cargo set-version`)
+- [ ] Generate changelog (`pnpm changelog`)
+- [ ] `git tag v0.1.0` → push tags
+- [ ] GitHub Action builds & uploads installers
+- [ ] Publish release notes with checksums & demo GIF
 
 ---
