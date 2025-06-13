@@ -39,6 +39,9 @@ jobs:
             target
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
 
+      - name: Install Tauri CLI
+        run: cargo install tauri-cli --locked
+
       - name: Install dependencies
         run: pnpm install
 
