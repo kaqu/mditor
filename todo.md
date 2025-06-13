@@ -37,10 +37,10 @@ _(check items as you complete them)_
   - [x] Lint (`pnpm exec eslint .`)
   - [x] Unit tests (`pnpm -r test` & `cargo test`)
   - [x] Build desktop app (`cargo tauri build --debug`) on all OSes
-- [ ] `.github/workflows/release.yml`
-  - [ ] Trigger on tags `v*`
-  - [ ] Build signed installers
-  - [ ] Upload to GitHub Release
+- [x] `.github/workflows/release.yml`
+  - [x] Trigger on tags `v*`
+  - [x] Build signed installers
+  - [x] Upload to GitHub Release
 
 ---
 
