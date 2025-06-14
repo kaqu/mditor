@@ -61,9 +61,9 @@ _(check items as you complete them)_
 ## 4 SQLite Layer
 
 - [x] `db/schema.sql` — create `nodes`, `assets`, `op_log`
-- [ ] `db.rs`
-  - [ ] Open DB file in platform-specific app data dir
-  - [ ] Run migrations on startup
+- [x] `db.rs`
+  - [x] Open DB file in platform-specific app data dir
+  - [x] Run migrations on startup
 - [ ] CRUD helpers (`create_node`, `update_content`, `move_node`, `delete_node`)
 - [ ] Op-log insert on each mutating call
 - [ ] Unit tests: CRUD paths, cascade delete, retention trim
@@ -72,12 +72,12 @@ _(check items as you complete them)_
 
 ## 5 Tool Command API (Rust)
 
-- [ ] `#[tauri::command] read_file(id)`
-- [ ] `write_file(id, new_content)` → return unified diff
-- [ ] `create_file(parent_id, name, content?)`
-- [ ] `delete_node(id)`
-- [ ] `move_node(id, new_parent)`
-- [ ] `list_tree(parent_id?)` (shallow)
+- [x] `#[tauri::command] read_file(id)`
+- [x] `write_file(id, new_content)` → return unified diff
+- [x] `create_file(parent_id, name, content?)`
+- [x] `delete_node(id)`
+- [x] `move_node(id, new_parent)`
+- [x] `list_tree(parent_id?)` (shallow)
 - [ ] `undo()` / `redo()`
 - [ ] `export_zip(dest_path)` / `export_dir(dest)`
 - [ ] `import_path(src)` merges & returns report
