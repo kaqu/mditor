@@ -61,9 +61,9 @@ _(check items as you complete them)_
 ## 4 SQLite Layer
 
 - [x] `db/schema.sql` — create `nodes`, `assets`, `op_log`
-- [ ] `db.rs`
-  - [ ] Open DB file in platform-specific app data dir
-  - [ ] Run migrations on startup
+- [x] `db.rs`
+  - [x] Open DB file in platform-specific app data dir
+  - [x] Run migrations on startup
 - [ ] CRUD helpers (`create_node`, `update_content`, `move_node`, `delete_node`)
 - [ ] Op-log insert on each mutating call
 - [ ] Unit tests: CRUD paths, cascade delete, retention trim
